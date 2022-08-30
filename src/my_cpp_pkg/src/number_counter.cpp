@@ -1,3 +1,4 @@
+#include <memory>
 #include <functional>
 
 #include "rclcpp/rclcpp.hpp"
