@@ -14,6 +14,10 @@ int main(int argc, char *argv[])
     auto client = node->create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
     while (!client->wait_for_service(std::chrono::seconds(1)))
     {
+        if (!rclcpp::ok()) {
+            RCLCPP_ERROR(node->get_logger(), "Interrupted while waiting for the service. Exiting.");
+            return 0;
+        }
         RCLCPP_WARN(node->get_logger(), "Waiting for the server to be up...");
     }
 
@@ -22,7 +26,7 @@ int main(int argc, char *argv[])
     request->b = 8;
 
     auto future = client->async_send_request(request);
-    if (rclcpp::spin_until_future_complete(node, future) == rclcpp::executor::FutureReturnCode::SUCCESS)
+    if (rclcpp::spin_until_future_complete(node, future) == rclcpp::FutureReturnCode::SUCCESS)
     {
         RCLCPP_INFO(node->get_logger(), "%d + %d = %d", request->a, request->b, future.get()->sum);
     }
