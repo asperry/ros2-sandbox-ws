@@ -9,7 +9,9 @@ class LedPanelNode(Node):
 
     def __init__(self):
         super().__init__("led_panel")
-        self.panel_state_ = [False, False, False]
+        self.declare_parameter("led_states", [False, False, False]);
+
+        self.panel_state_ = self.get_parameter("led_states").value
         self.panel_state_publisher_ = self.create_publisher(
             LedPanelState, "led_panel_state", 10)
         self.panel_state_publishing_timer_ = self.create_timer(1.0, self.publish_panel_state)

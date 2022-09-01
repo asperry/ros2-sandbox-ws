@@ -2,6 +2,7 @@
 #include <functional>
 #include <chrono>
 #include <array>
+#include <algorithm>
 
 #include "rclcpp/rclcpp.hpp"
 #include "my_robot_interfaces/msg/led_panel_state.hpp"
@@ -14,6 +15,11 @@ class LedPanelNode : public rclcpp::Node
 public:
     LedPanelNode() : Node("led_panel")
     {
+        declare_parameter("led_states", std::vector<bool>{false, false, false});
+
+        auto led_states_parameter = get_parameter("led_states").as_bool_array();
+        std::copy_n(led_states_parameter.begin(), 3, panel_state_.begin());
+
         panel_state_publisher_ = create_publisher<my_robot_interfaces::msg::LedPanelState>(
             "led_panel_state", 10);
         panel_state_publishing_timer_ = create_wall_timer(
