@@ -39,6 +39,7 @@ private:
         {
             panel_state_[request->led_number - 1] = request->state;
             response->success = true;
+            publishPanelState();
             RCLCPP_INFO(get_logger(), "Updated LED %d to %s", request->led_number, request->state ? "true" : "false");
         }
         else

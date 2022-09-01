@@ -5,5 +5,8 @@
     "files.associations": {
         "chrono": "cpp",
         "functional": "cpp"
-    }
+    },
+    "python.analysis.extraPaths": [
+        "~/ros2_ws/install/my_robot_interfaces/lib/python3.8/site-packages"
+    ]
 }

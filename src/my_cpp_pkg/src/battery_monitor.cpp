@@ -18,7 +18,7 @@ public:
         }
         battery_state_timer_ = create_wall_timer(
             std::chrono::seconds(1), std::bind(&BatteryMonitorNode::callbackBatteryStateTimer, this));
-        RCLCPP_INFO(get_logger(), "Battery monitory has been started.");
+        RCLCPP_INFO(get_logger(), "Battery monitor has been started.");
     }
 
 private:
