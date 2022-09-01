@@ -34,7 +34,7 @@ public:
             auto response = future.get();
             RCLCPP_INFO(get_logger(), "%d + %d = %d", a, b, response->sum);
         }
-        catch (const std::exception &e)
+        catch (const std::exception& e)
         {
             RCLCPP_ERROR(get_logger(), "Service call failed.");
         }

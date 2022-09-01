@@ -1,0 +1,9 @@
+{
+    "python.autoComplete.extraPaths": [
+        "~/ros2_ws/install/my_robot_interfaces/lib/python3.8/site-packages"
+    ],
+    "files.associations": {
+        "chrono": "cpp",
+        "functional": "cpp"
+    }
+}
