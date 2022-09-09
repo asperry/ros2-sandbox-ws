@@ -31,8 +31,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
 )
 
-rosidl_target_interfaces(publish_adddress_book
-  ${PROJECT_NAME} "rosidl_typesupport_cpp")
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries(publish_adddress_book "${cpp_typesupport_target}")
 
 ament_export_dependencies(rosidl_default_runtime)
 
