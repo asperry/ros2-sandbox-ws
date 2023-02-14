@@ -5,3 +5,7 @@ log/
 
 # Python files
 *.pyc
+
+# Visual Studio Code workspace settings
+.vscode
+
