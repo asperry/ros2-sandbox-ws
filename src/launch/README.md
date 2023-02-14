@@ -1,0 +1,1 @@
+This directory contains examples of standalone launch files (i.e. not part of a package) as directed by the ROS 2 tutorials on launch files.
